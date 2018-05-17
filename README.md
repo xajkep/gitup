@@ -10,14 +10,18 @@ Simple Python script, that recursively update git repositories for a given path.
 ( (_-. _)(_   )(     )(__)(  )___/ )(_) )/(__)\  )(   )__) 
  \___/(____) (__)   (______)(__)  (____/(__)(__)(__) (____)
 
+                                      version 0.2 - @xajkep
 
-usage: gitup.py [-h] <path>
+usage: gitup.py [-h] [--not-recursive] [-y] <path>
 
 Recursively update git repositories
 
 positional arguments:
-  <path>      path to git repositories
+  <path>           path to git repositories
 
 optional arguments:
-  -h, --help  show this help message and exit
+  -h, --help       show this help message and exit
+  --not-recursive  Disable recursivity
+  -y               Skip update confirmation
+
 ~~~
