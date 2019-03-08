@@ -2,22 +2,24 @@
 # coding: utf-8
 #
 # version: 0.2 @ 20180517
-#   [X] Python2 to Python3
-#   [X] Using glob instead of os.walk
-#   [X] List all available updates and ask for confirmation
-#   [X] Recursivity can be disabled
-#   [X] os.system to subprocess.Popen
-#   [X] Add requirements.txt for easy dependances installation via pip
-#   [X] Change informative output
-#   [X] Checking `git status` before updating
-#
+#   [*] Python2 to Python3
+#   [*] Using glob instead of os.walk
+#   [+] List all available updates and ask for confirmation
+#   [+] Recursivity can be disabled
+#   [*] os.system to subprocess.Popen
+#   [+] Add requirements.txt for easy dependances installation via pip
+#   [+] Change informative output
+#   [+] Checking `git status` before updating
 #
 # version: 0.4 @ 20190308
-#   [X] Printing the path of the repository when fetching
-#   [ ] Multi-threading the fetching
+#   [+] Printing the path of the repository when fetching
+#   [+] Multi-threading the fetching
+#   [*] Fixing global variable warning
+#   [+] Adding argument --git-path
 #
 # version: x.x
-#   [ ] Logs all in a file
+#   [+] Logs all in a file
+#   [*] Re-ask if you want to update when enter (empty response) is recieved
 #
 HEADER = """  ___  ____  ____    __  __  ____  ____    __   ____  ____ 
  / __)(_  _)(_  _)  (  )(  )(  _ \(  _ \  /__\ (_  _)( ___)
@@ -34,8 +36,8 @@ from threading import Thread
 
 GIT_PATH = '/usr/bin/git'
 
-repositories_to_update = []
 global repositories_to_update
+repositories_to_update = []
 
 def fetch(path_to_repo):
     if path_to_repo.find('/') > -1:
@@ -76,6 +78,7 @@ if __name__ == '__main__':
     parser.add_argument('path', metavar='<path>', type=str, help='path to git repositories')
     parser.add_argument('--not-recursive', dest='recursivity', action='store_false', help='Disable recursivity')
     parser.add_argument('-y', dest='skip_confirmation', action='store_true', help='Skip update confirmation')
+    parser.add_argument('--git-path', dest='git_path', default=GIT_PATH, help='Path to your git binary (default: %s)' % GIT_PATH)
     parser.set_defaults(recursivity=True)
     parser.set_defaults(skip_confirmation=False)
 
@@ -84,6 +87,7 @@ if __name__ == '__main__':
     recursivity = args.recursivity
     skip_confirmation = args.skip_confirmation
     confirmed = args.skip_confirmation
+    GIT_PATH = args.git_path
 
     if not os.path.isdir(args.path):
         print(colored("[!] %s is not a existing path" % args.path, "red"))
