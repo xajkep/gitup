@@ -24,7 +24,7 @@ HEADER = """  ___  ____  ____    __  __  ____  ____    __   ____  ____
 ( (_-. _)(_   )(     )(__)(  )___/ )(_) )/(__)\  )(   )__) 
  \___/(____) (__)   (______)(__)  (____/(__)(__)(__) (____)
 
-                                      version 0.2 - @xajkep
+                                      version 0.4 - @xajkep
 """
 from termcolor import colored
 import os, sys, argparse, time, subprocess

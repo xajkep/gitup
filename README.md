@@ -1,6 +1,6 @@
 # GIT UPDATE
 
-Simple Python script, that recursively update git repositories for a given path.
+Simple Python script that is recursively updating git repositories for a given path.
 
 ## Usage
 
@@ -10,7 +10,7 @@ Simple Python script, that recursively update git repositories for a given path.
 ( (_-. _)(_   )(     )(__)(  )___/ )(_) )/(__)\  )(   )__) 
  \___/(____) (__)   (______)(__)  (____/(__)(__)(__) (____)
 
-                                      version 0.2 - @xajkep
+                                      version 0.4 - @xajkep
 
 usage: gitup.py [-h] [--not-recursive] [-y] <path>
 
